@@ -19,24 +19,13 @@ import { useState, useEffect, useRef } from 'react';
 import { useCart } from '../lib/cart';
 import { api } from '../lib/api';
 
-const DEFAULT_CATEGORIES = [
-  { id: 1, name: 'Mobile Phones', slug: 'mobile-phones', icon: '📱' },
-  { id: 2, name: 'Audio Devices', slug: 'audio-devices', icon: '🎧' },
-  { id: 3, name: 'Television Products', slug: 'television-products', icon: '📺' },
-  { id: 4, name: 'Charging Accessories', slug: 'charging-accessories', icon: '🔌' },
-  { id: 5, name: 'Computers & Accessories', slug: 'computers-accessories', icon: '💻' },
-  { id: 6, name: 'Electrical Products', slug: 'electrical-products', icon: '⚡' },
-  { id: 7, name: 'Security Products', slug: 'security-products', icon: '🔒' },
-  { id: 8, name: 'Renewable Energy', slug: 'renewable-energy', icon: '☀️' },
-];
-
 export default function Header() {
   const navigate = useNavigate();
   const { itemCount, total } = useCart();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [categoriesMenuOpen, setCategoriesMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
-  const [categories, setCategories] = useState(DEFAULT_CATEGORIES);
+  const [categories, setCategories] = useState([]);
   const dropdownRef = useRef(null);
 
   useEffect(() => {
@@ -279,16 +268,6 @@ export default function Header() {
                     ))}
                   </div>
 
-                  <div className="p-3 bg-gray-50">
-                    <Link
-                      to="/admin"
-                      onClick={() => setCategoriesMenuOpen(false)}
-                      className="flex items-center gap-2 text-xs font-bold text-brand-600 hover:underline"
-                    >
-                      <Shield className="w-3.5 h-3.5" />
-                      Admin Dashboard
-                    </Link>
-                  </div>
                 </div>
               )}
             </div>
@@ -392,14 +371,6 @@ export default function Header() {
                   className="block px-3 py-2 text-sm font-semibold text-gray-800 hover:bg-gray-50 rounded-lg"
                 >
                   Customer Support
-                </Link>
-                <Link
-                  to="/admin"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center gap-2 px-3 py-2 text-sm font-bold text-brand-600 hover:bg-brand-50 rounded-lg"
-                >
-                  <Shield className="w-4 h-4" />
-                  Admin Dashboard
                 </Link>
               </div>
             </div>

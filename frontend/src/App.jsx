@@ -6,7 +6,6 @@ import ProductPage from './pages/ProductPage';
 import CartPage from './pages/CartPage.jsx';
 import CheckoutPage from './pages/CheckoutPage';
 import AccountPage from './pages/AccountPage';
-import AdminDashboard from './pages/AdminDashboard';
 
 function App() {
   return (
@@ -19,7 +18,7 @@ function App() {
           <Route path="/cart" element={<CartPage />} />
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/account" element={<AccountPage />} />
-          <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="*" element={<HomePage />} />
         </Routes>
       </BrowserRouter>
     </CartProvider>
